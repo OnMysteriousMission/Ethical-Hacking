@@ -1,6 +1,6 @@
-# Ethical-Hacking
+Ethical-Hacking
 
-flag[adcb1f]:
+flag{adcb1f}:
 nmap -p21  -oA flaggor 10.0.0-15.0-254 
 Host: 10.0.3.51 ()	Ports: 21/open/tcp//ftp///
 searched this on google "password cracking ftp kali"
