@@ -126,7 +126,14 @@ flag{f9038f}:
 
 hashcat -h
 
+dictionary wordlist rockyou.txt download
 
+cat /etc/passwd
+
+cat /etc/shadow ---not worked
+
+ls -l /etc/shadow /usr/bin/passwd
+stat /usr/bin/passwd
 
 
 
